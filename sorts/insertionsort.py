@@ -8,8 +8,8 @@ def find_the_place(items, v, till):
     >>> find_the_place(items, 3, 3)
     2
     """
-    for i in range(0, till):
-        if v < items[i]: return i
+    for i,val in enumerate(items[:till]):
+        if v < val: return i
     return till
 
 def insertionsort(items):
