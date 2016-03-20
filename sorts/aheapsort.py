@@ -12,6 +12,9 @@ def rchild(p): return 2 * (p + 1)
 
 
 def findleaf(item, i, last):
+    """
+    Find the maximum child path, and return the index of that child.
+    """
     while i <= last:
         l = lchild(i)
         r = rchild(i)
@@ -28,14 +31,19 @@ def findleaf(item, i, last):
 
 def siftdown(items, i, last):
     j = findleaf(items, i, last)
-    while items[i] > items[j]:
-        j = parent(j)
-    x = items[j]
-    items[j] = items[i]
+
+    # we have the maximum path child in j. Now, find where
+    # we (i) are in this path. `j` will contain our parent
+    while items[i] > items[j]: j = parent(j)
+
+    # save current parent `j` on x
+    # put [i] on [j]
+    x, items[j] = items[j], items[i]
+    
+    # swap x up the tree.
     while j > i:
-        p = parent(j)
-        x, items[p] = items[p], x
-        j = p
+        j = parent(j)
+        x, items[j] = items[j], x
     return items
 
 
