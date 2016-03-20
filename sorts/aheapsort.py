@@ -11,21 +11,20 @@ def lchild(p): return 2 * p + 1
 def rchild(p): return 2 * (p + 1)
 
 
+def children(p): return (lchild(p), rchild(p))
+
+
 def findleaf(item, i, last):
     """
     Find the maximum child path, and return the index of that child.
     """
     while i <= last:
-        l = lchild(i)
-        r = rchild(i)
+        l, r = children(i)
         if r > last:
-            if l <= last:
-                i = l
+            if l <= last: i = l
             break
-        elif item[l] > item[r]:
-            i = l
-        else:
-            i = r
+        elif item[l] > item[r]: i = l
+        else: i = r
     return i
 
 
