@@ -1,8 +1,9 @@
-with import <nixpkgs> {};
-buildPythonPackage {
-  name = "mypkg";
-  buildInputs = [ pkgs.python3 ];
-  src = null;
-  PGDATA = "...";
-  i_fcolor="red";
+with import <nixpkgs> {}; {
+  pyEnv = stdenv.mkDerivation {
+    name = "py";
+    buildInputs = [ stdenv python3 python34Packages.virtualenv python34Packages.pytest ];
+    shellHook = ''
+    export PS1="| ";
+    '';
+  };
 }
