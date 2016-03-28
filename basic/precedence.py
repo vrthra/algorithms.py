@@ -1,4 +1,3 @@
-
 import doctest
 
 def pparse(lst):
@@ -38,5 +37,5 @@ def pparse(lst):
     opStack.reverse()
     return ' '.join(output + opStack)
     
-doctest.testmod(verbose=False)
+doctest.testmod()
 
